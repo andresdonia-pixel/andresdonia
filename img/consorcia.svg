@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <radialGradient id="glow" cx="85%" cy="0%" r="70%">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity=".22"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2dd4bf" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#2dd4bf" stop-opacity="0"/>
+    </linearGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#1f2833" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="720" fill="#0a0d12"/>
+  <rect width="1280" height="720" fill="url(#grid)" opacity=".5"/>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+
+  <!-- ventana -->
+  <g transform="translate(80 70)">
+    <rect width="1120" height="600" rx="16" fill="#121821" stroke="#2a3644"/>
+    <path d="M16 0h1088a16 16 0 0 1 16 16v28H0V16A16 16 0 0 1 16 0Z" fill="#171f2a"/>
+    <circle cx="24" cy="22" r="6" fill="#2c3643"/><circle cx="44" cy="22" r="6" fill="#2c3643"/><circle cx="64" cy="22" r="6" fill="#2c3643"/>
+    <text x="92" y="27" font-family="JetBrains Mono, monospace" font-size="13" fill="#5f6b7a">consorcia · administración</text>
+
+    <!-- barra lateral -->
+    <rect x="0" y="44" width="220" height="556" fill="#0e1218"/>
+    <g font-size="15" fill="#8b98a8">
+      <rect x="16" y="64" width="34" height="34" rx="9" fill="#2dd4bf"/>
+      <text x="33" y="87" font-family="JetBrains Mono, monospace" font-size="15" font-weight="700" fill="#04201c" text-anchor="middle">C</text>
+      <text x="62" y="87" font-family="Space Grotesk, Inter, sans-serif" font-size="19" font-weight="700" fill="#e6edf3">Consorcia</text>
+      <rect x="12" y="122" width="196" height="38" rx="8" fill="#171f2a"/>
+      <rect x="12" y="122" width="3" height="38" rx="1.5" fill="#2dd4bf"/>
+      <text x="32" y="146" fill="#e6edf3">Resumen</text>
+      <text x="32" y="194">Edificios</text>
+      <text x="32" y="236">Propietarios</text>
+      <text x="32" y="278">Expensas</text>
+      <text x="32" y="320">Cobranzas</text>
+      <text x="32" y="362">Proveedores</text>
+      <text x="32" y="404">Trabajos</text>
+      <text x="32" y="446">Asambleas</text>
+    </g>
+
+    <!-- contenido -->
+    <g transform="translate(250 70)">
+      <text x="0" y="22" font-family="Space Grotesk, Inter, sans-serif" font-size="24" font-weight="700" fill="#e6edf3">Resumen de octubre</text>
+      <rect x="640" y="0" width="200" height="34" rx="8" fill="#0e1218" stroke="#2a3644"/>
+      <text x="656" y="22" font-size="13" fill="#5f6b7a">Buscar edificio, UF, proveedor…</text>
+
+      <!-- tarjetas -->
+      <g font-family="JetBrains Mono, monospace">
+        <rect x="0" y="56" width="200" height="104" rx="12" fill="#0e1218" stroke="#1f2833"/>
+        <text x="18" y="86" font-size="12" fill="#8b98a8">EDIFICIOS</text>
+        <text x="18" y="132" font-family="Space Grotesk, Inter, sans-serif" font-size="38" font-weight="700" fill="#e6edf3">48</text>
+        <rect x="214" y="56" width="200" height="104" rx="12" fill="#0e1218" stroke="#1f2833"/>
+        <text x="232" y="86" font-size="12" fill="#8b98a8">UNIDADES</text>
+        <text x="232" y="132" font-family="Space Grotesk, Inter, sans-serif" font-size="38" font-weight="700" fill="#e6edf3">1.312</text>
+        <rect x="428" y="56" width="200" height="104" rx="12" fill="#0e1218" stroke="#1f2833"/>
+        <text x="446" y="86" font-size="12" fill="#8b98a8">COBRADO</text>
+        <text x="446" y="132" font-family="Space Grotesk, Inter, sans-serif" font-size="38" font-weight="700" fill="#34d399">87%</text>
+        <rect x="642" y="56" width="198" height="104" rx="12" fill="#0e1218" stroke="#1f2833"/>
+        <text x="660" y="86" font-size="12" fill="#8b98a8">CON DEUDA</text>
+        <text x="660" y="132" font-family="Space Grotesk, Inter, sans-serif" font-size="38" font-weight="700" fill="#fbbf24">63</text>
+      </g>
+
+      <!-- grafico -->
+      <rect x="0" y="178" width="520" height="300" rx="12" fill="#0e1218" stroke="#1f2833"/>
+      <text x="20" y="208" font-size="14" font-weight="600" fill="#e6edf3">Evolución de la cobranza</text>
+      <text x="20" y="228" font-size="12" fill="#5f6b7a">% recaudado sobre lo emitido</text>
+      <g stroke="#1f2833">
+        <line x1="20" y1="290" x2="500" y2="290"/><line x1="20" y1="340" x2="500" y2="340"/><line x1="20" y1="390" x2="500" y2="390"/><line x1="20" y1="440" x2="500" y2="440"/>
+      </g>
+      <path d="M20 400 L100 380 L180 386 L260 350 L340 336 L420 306 L500 284 L500 440 L20 440 Z" fill="url(#area)"/>
+      <path d="M20 400 L100 380 L180 386 L260 350 L340 336 L420 306 L500 284" fill="none" stroke="#2dd4bf" stroke-width="3" stroke-linejoin="round"/>
+      <circle cx="500" cy="284" r="6" fill="#2dd4bf" stroke="#0e1218" stroke-width="3"/>
+      <g font-family="JetBrains Mono, monospace" font-size="11" fill="#5f6b7a">
+        <text x="20" y="464">may</text><text x="180" y="464">jul</text><text x="340" y="464">sep</text><text x="476" y="464">oct</text>
+      </g>
+
+      <!-- tabla -->
+      <rect x="538" y="178" width="302" height="300" rx="12" fill="#0e1218" stroke="#1f2833"/>
+      <text x="558" y="208" font-size="14" font-weight="600" fill="#e6edf3">Expensas del mes</text>
+      <g font-size="13">
+        <text x="558" y="248" fill="#8b98a8">Edificio Los Álamos</text><rect x="764" y="234" width="58" height="22" rx="6" fill="#34d399" fill-opacity=".15"/><text x="793" y="250" fill="#34d399" text-anchor="middle" font-size="11">cerrada</text>
+        <line x1="558" y1="264" x2="822" y2="264" stroke="#1f2833"/>
+        <text x="558" y="292" fill="#8b98a8">Torre Mirador</text><rect x="764" y="278" width="58" height="22" rx="6" fill="#34d399" fill-opacity=".15"/><text x="793" y="294" fill="#34d399" text-anchor="middle" font-size="11">cerrada</text>
+        <line x1="558" y1="308" x2="822" y2="308" stroke="#1f2833"/>
+        <text x="558" y="336" fill="#8b98a8">Edificio Arce II</text><rect x="764" y="322" width="58" height="22" rx="6" fill="#60a5fa" fill-opacity=".15"/><text x="793" y="338" fill="#60a5fa" text-anchor="middle" font-size="11">en curso</text>
+        <line x1="558" y1="352" x2="822" y2="352" stroke="#1f2833"/>
+        <text x="558" y="380" fill="#8b98a8">Residencias Sur</text><rect x="764" y="366" width="58" height="22" rx="6" fill="#60a5fa" fill-opacity=".15"/><text x="793" y="382" fill="#60a5fa" text-anchor="middle" font-size="11">en curso</text>
+        <line x1="558" y1="396" x2="822" y2="396" stroke="#1f2833"/>
+        <text x="558" y="424" fill="#8b98a8">Edificio Norte</text><rect x="764" y="410" width="58" height="22" rx="6" fill="#fbbf24" fill-opacity=".15"/><text x="793" y="426" fill="#fbbf24" text-anchor="middle" font-size="11">revisar</text>
+      </g>
+    </g>
+  </g>
+</svg>

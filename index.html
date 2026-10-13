@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Andrés D'Onia · Sistemas a medida para pymes</title>
+<meta name="description" content="Desarrollo sistemas de gestión, apps y productos digitales para pymes: ventas, stock, cobranzas, reservas y más. Buenos Aires, Argentina.">
+<meta property="og:title" content="Andrés D'Onia · Sistemas a medida para pymes">
+<meta property="og:description" content="Sistemas de gestión, apps y productos digitales que ordenan negocios reales.">
+<meta property="og:image" content="https://andresdonia.com.ar/og.jpg">
+<meta property="og:url" content="https://andresdonia.com.ar">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0d12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230a0d12'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' text-anchor='middle' fill='%232dd4bf'%3EAD%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0d12; --bg2: #0e1218; --sup: #121821; --sup2: #171f2a; --borde: #1f2833; --borde2: #2a3644;
+    --txt: #e6edf3; --gris: #8b98a8; --gris2: #5f6b7a;
+    --ac: #2dd4bf; --ac2: #5eead4; --azul: #60a5fa; --ok: #34d399; --warn: #fbbf24;
+    --mono: "JetBrains Mono", ui-monospace, monospace; --disp: "Space Grotesk", "Inter", sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: "Inter", system-ui, sans-serif; background: var(--bg); color: var(--txt); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+  .mono { font-family: var(--mono); }
+
+  /* Header */
+  header { position: sticky; top: 0; z-index: 40; background: rgba(10,13,18,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--borde); }
+  header .wrap { height: 64px; display: flex; align-items: center; justify-content: space-between; }
+  .marca { display: flex; align-items: center; gap: 10px; font-family: var(--mono); font-weight: 700; font-size: 15px; }
+  .marca img { width: 32px; height: 32px; border-radius: 8px; object-fit: cover; border: 1px solid var(--borde2); }
+  .marca span { color: var(--ac); }
+  nav { display: flex; gap: 28px; align-items: center; font-size: 14px; color: var(--gris); }
+  nav a { transition: color .15s; }
+  nav a:hover { color: var(--txt); }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; height: 48px; padding: 0 22px; border-radius: 10px; font-weight: 600; font-size: 15px; transition: transform .15s, background .15s, border-color .15s; white-space: nowrap; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn.prim { background: var(--ac); color: #04201c; }
+  .btn.prim:hover { background: var(--ac2); }
+  .btn.sec { border: 1px solid var(--borde2); color: var(--txt); background: rgba(255,255,255,.02); }
+  .btn.sec:hover { border-color: var(--ac); }
+  .btn.chico { height: 38px; padding: 0 16px; font-size: 14px; }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* Hero */
+  .hero { position: relative; overflow: hidden; padding: 96px 0 90px; border-bottom: 1px solid var(--borde); }
+  .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--borde) 1px, transparent 1px), linear-gradient(90deg, var(--borde) 1px, transparent 1px); background-size: 56px 56px; opacity: .45; -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 75%); mask-image: radial-gradient(ellipse 80% 70% at 50% 30%, #000 30%, transparent 75%); }
+  .hero::after { content: ""; position: absolute; width: 760px; height: 760px; right: -200px; top: -260px; background: radial-gradient(circle, rgba(45,212,191,.16), transparent 62%); }
+  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.35fr .95fr; gap: 56px; align-items: center; }
+  .eyebrow { font-family: var(--mono); font-size: 13px; color: var(--ac); margin-bottom: 22px; display: flex; align-items: center; gap: 10px; }
+  .eyebrow::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(52,211,153,.15); }
+  h1 { font-family: var(--disp); font-size: clamp(40px, 6vw, 68px); line-height: 1.04; letter-spacing: -2px; font-weight: 700; }
+  h1 .grad { background: linear-gradient(90deg, var(--ac), var(--azul)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lead { font-size: clamp(17px, 2vw, 19px); color: var(--gris); margin: 24px 0 34px; max-width: 580px; }
+  .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .ventana { background: var(--sup); border: 1px solid var(--borde2); border-radius: 14px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+  .ventana .barra { height: 38px; display: flex; align-items: center; gap: 7px; padding: 0 14px; border-bottom: 1px solid var(--borde); background: var(--sup2); }
+  .ventana .barra i { width: 11px; height: 11px; border-radius: 50%; background: #2c3643; }
+  .ventana .barra span { margin-left: 10px; font-family: var(--mono); font-size: 12px; color: var(--gris2); }
+  .ventana .cuerpo { padding: 24px; }
+  .perfil { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
+  .perfil img { width: 84px; height: 84px; border-radius: 12px; object-fit: cover; border: 1px solid var(--borde2); }
+  .perfil h3 { font-family: var(--disp); font-size: 22px; letter-spacing: -.4px; }
+  .perfil p { font-size: 14px; color: var(--gris); }
+  .code { font-family: var(--mono); font-size: 13px; line-height: 1.9; color: var(--gris); border-top: 1px solid var(--borde); padding-top: 16px; }
+  .code b { color: var(--azul); font-weight: 500; }
+  .code em { font-style: normal; color: var(--ac2); }
+  .code .c { color: var(--gris2); }
+
+  /* Secciones */
+  section { padding: 96px 0; border-bottom: 1px solid var(--borde); }
+  .kicker { font-family: var(--mono); font-size: 13px; color: var(--ac); margin-bottom: 14px; }
+  h2 { font-family: var(--disp); font-size: clamp(30px, 4.2vw, 44px); line-height: 1.1; letter-spacing: -1.2px; max-width: 760px; font-weight: 700; }
+  .sub { color: var(--gris); font-size: 17px; margin-top: 14px; max-width: 640px; }
+
+  /* Productos */
+  .prods { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .prod { background: var(--sup); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
+  .prod:hover { border-color: var(--borde2); transform: translateY(-3px); }
+  .prod img { aspect-ratio: 16 / 9; object-fit: cover; width: 100%; border-bottom: 1px solid var(--borde); }
+  .prod .cuerpo { padding: 26px; display: flex; flex-direction: column; flex: 1; }
+  .tag { font-family: var(--mono); font-size: 12px; color: var(--gris); margin-bottom: 10px; }
+  .tag b { color: var(--ac); font-weight: 500; }
+  .prod h3 { font-family: var(--disp); font-size: 24px; letter-spacing: -.5px; }
+  .prod p { color: var(--gris); margin: 8px 0 22px; flex: 1; font-size: 15.5px; }
+  .acciones { display: flex; gap: 10px; flex-wrap: wrap; }
+  /* Producto destacado (ocupa las dos columnas) */
+  .prod.dest { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr; border-color: var(--borde2); }
+  .prod.dest img { aspect-ratio: auto; height: 100%; min-height: 300px; object-fit: contain; background: var(--bg); border-bottom: 0; border-right: 1px solid var(--borde); }
+  .prod.dest .cuerpo { padding: 34px; justify-content: center; }
+  .prod.dest h3 { font-size: 30px; }
+  .nuevo { display: inline-block; font-family: var(--mono); font-size: 11px; color: #04201c; background: var(--ac); border-radius: 5px; padding: 1px 7px; margin-left: 8px; vertical-align: 2px; font-weight: 700; letter-spacing: .4px; }
+  .puntos { list-style: none; display: grid; gap: 7px; margin: 4px 0 24px; font-size: 14.5px; color: var(--gris); }
+  .puntos li { display: flex; gap: 10px; }
+  .puntos li::before { content: "→"; font-family: var(--mono); color: var(--ac); flex: none; }
+
+  /* Casos */
+  .casos { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--borde); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; }
+  .caso { background: var(--bg2); padding: 28px; display: flex; flex-direction: column; transition: background .2s; }
+  .caso:hover { background: var(--sup); }
+  .caso .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .caso .ic { width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--borde2); display: grid; place-items: center; color: var(--ac); }
+  .caso .ic svg { width: 20px; height: 20px; }
+  .caso .num { font-family: var(--mono); font-size: 12px; color: var(--gris2); }
+  .caso h3 { font-family: var(--disp); font-size: 18px; letter-spacing: -.3px; margin-bottom: 8px; }
+  .caso p { color: var(--gris); font-size: 14.5px; flex: 1; }
+  .stack { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack span { font-family: var(--mono); font-size: 11.5px; color: var(--gris); border: 1px solid var(--borde2); padding: 2px 8px; border-radius: 6px; }
+  .ver { display: inline-block; margin-top: 14px; font-family: var(--mono); font-size: 13px; color: var(--ac); }
+
+  /* Proyectos */
+  .grilla { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .proy { background: var(--sup); border: 1px solid var(--borde); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; transition: border-color .2s; }
+  a.proy:hover { border-color: var(--ac); }
+  .proy .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-family: var(--mono); font-size: 11.5px; }
+  .proy .tipo { color: var(--gris2); text-transform: uppercase; letter-spacing: 1px; }
+  .estado { display: inline-flex; align-items: center; gap: 6px; color: var(--gris); }
+  .estado::before { content: ""; width: 7px; height: 7px; border-radius: 50%; }
+  .estado.vivo::before { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+  .estado.dev::before { background: var(--warn); }
+  .proy h3 { font-family: var(--disp); font-size: 19px; margin-bottom: 6px; letter-spacing: -.3px; }
+  .proy p { color: var(--gris); font-size: 14.5px; flex: 1; }
+  .proy .ir { margin-top: 16px; font-family: var(--mono); font-size: 13px; color: var(--ac); }
+
+  /* Sobre mí */
+  .sobre .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: start; }
+  .sobre p { font-size: 17px; color: var(--gris); margin-top: 16px; }
+  .sobre p b { color: var(--txt); font-weight: 600; }
+  .pasos { background: var(--sup); border: 1px solid var(--borde); border-radius: 14px; padding: 28px; }
+  .pasos h3 { font-family: var(--mono); font-size: 13px; color: var(--ac); font-weight: 500; margin-bottom: 20px; }
+  .pasos ol { list-style: none; counter-reset: c; display: grid; gap: 20px; }
+  .pasos li { counter-increment: c; display: grid; grid-template-columns: 38px 1fr; gap: 14px; font-size: 14.5px; color: var(--gris); }
+  .pasos li::before { content: "0" counter(c); font-family: var(--mono); font-size: 13px; color: var(--ac); border: 1px solid var(--borde2); border-radius: 8px; height: 32px; display: grid; place-items: center; }
+  .pasos li b { display: block; color: var(--txt); font-size: 15.5px; font-weight: 600; }
+
+  /* Contacto */
+  .contacto { text-align: center; position: relative; overflow: hidden; }
+  .contacto::before { content: ""; position: absolute; width: 900px; height: 500px; left: 50%; top: 40%; transform: translate(-50%, -50%); background: radial-gradient(ellipse, rgba(45,212,191,.12), transparent 65%); }
+  .contacto .wrap { position: relative; }
+  .contacto h2 { margin: 0 auto; }
+  .contacto .sub { margin: 14px auto 34px; }
+  .contacto .ctas { justify-content: center; }
+  .redes { margin-top: 30px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; font-family: var(--mono); font-size: 13px; color: var(--gris); }
+  .redes a:hover { color: var(--ac); }
+  footer { padding: 26px 0; font-family: var(--mono); font-size: 12.5px; color: var(--gris2); }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+
+  @media (max-width: 920px) {
+    nav a:not(.btn) { display: none; }
+    .hero .wrap, .sobre .wrap { grid-template-columns: 1fr; }
+    .prods { grid-template-columns: 1fr; }
+    .prod.dest { grid-template-columns: 1fr; }
+    .prod.dest img { aspect-ratio: 16 / 9; height: auto; min-height: 0; border-right: 0; border-bottom: 1px solid var(--borde); }
+    .prod.dest .cuerpo { padding: 26px; }
+    .casos, .grilla { grid-template-columns: 1fr 1fr; }
+    section { padding: 68px 0; }
+    .hero { padding: 60px 0 64px; }
+  }
+  @media (max-width: 560px) {
+    .casos, .grilla { grid-template-columns: 1fr; }
+    .ctas .btn { width: 100%; }
+    h1 { letter-spacing: -1.2px; }
+    .marca .ocultar { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></symbol>
+  <g id="ic" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></g>
+  <symbol id="i-edificio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3"/></g></symbol>
+  <symbol id="i-caja" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5 11h-15z"/><path d="M8 9V6a4 4 0 0 1 8 0v3"/></g></symbol>
+  <symbol id="i-ticket" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 0 0 4v4h18v-4a2 2 0 0 1 0-4V4H3z"/><path d="M13 4v2M13 10v2M13 16v0"/></g></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></g></symbol>
+  <symbol id="i-pulso" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></g></symbol>
+  <symbol id="i-mesa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M17.5 14v7M14 17.5h7"/></g></symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="marca" href="#"><img src="img/andres.jpg" alt="">andres<span>donia</span><span class="ocultar" style="color:var(--gris2)">.com.ar</span></a>
+    <nav>
+      <a href="#productos">Productos</a>
+      <a href="#sistemas">Sistemas</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#sobre">Sobre mí</a>
+      <a class="btn sec chico" data-wa href="#"><svg><use href="#wa"/></svg>Contacto</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Disponible para nuevos proyectos</div>
+      <h1>Sistemas que <span class="grad">ordenan negocios.</span></h1>
+      <p class="lead">Desarrollo sistemas de gestión, apps y herramientas para pymes de Argentina: ventas, stock, cobranzas, reservas, turnos. Simples de usar y funcionando todos los días en negocios reales.</p>
+      <div class="ctas">
+        <a class="btn prim" href="#productos">Ver trabajos</a>
+        <a class="btn sec" data-wa href="#"><svg><use href="#wa"/></svg>Escribime por WhatsApp</a>
+      </div>
+    </div>
+    <div class="ventana">
+      <div class="barra"><i></i><i></i><i></i><span>~/andres-donia</span></div>
+      <div class="cuerpo">
+        <div class="perfil">
+          <img src="img/andres.jpg" alt="Andrés D'Onia" width="84" height="84">
+          <div><h3>Andrés D'Onia</h3><p>Desarrollador freelance</p></div>
+        </div>
+        <div class="code">
+          <div><b>ubicación</b>: <em>"Buenos Aires, AR"</em></div>
+          <div><b>hago</b>: [<em>"sistemas de gestión"</em>, <em>"apps web"</em>, <em>"productos"</em>]</div>
+          <div><b>stack</b>: [<em>"Apps Script"</em>, <em>"Next.js"</em>, <em>"Supabase"</em>, <em>"Firebase"</em>]</div>
+          <div><b>extra</b>: <em>"experiencia en administración, ventas y turismo"</em></div>
+          <div class="c">// primero entiendo el negocio, después programo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="productos">
+  <div class="wrap">
+    <div class="kicker">01 / productos</div>
+    <h2>Listos para usar en tu negocio.</h2>
+    <p class="sub">Nacieron de sistemas que hice para clientes y hoy cualquiera puede aprovecharlos.</p>
+    <div class="prods">
+      <div class="prod dest">
+        <img src="img/consorcia.svg" alt="Consorcia: panel de gestión de edificios con expensas y cobranza" loading="lazy">
+        <div class="cuerpo">
+          <div class="tag"><b>●</b> administraciones de consorcios</div>
+          <h3>Consorcia<span class="nuevo">NUEVO</span></h3>
+          <p>El sistema de gestión que uso todos los días en una administración de unos 50 edificios. Edificios, propietarios, proveedores, expensas y cobranzas en un solo lugar, sobre el Google Drive de tu administración.</p>
+          <ul class="puntos">
+            <li>Liquidación y cierre de expensas, con vuelta atrás si algo salió mal</li>
+            <li>Deudores, punitorios y cobranzas aplicadas en orden</li>
+            <li>Estadísticas listas para mostrar en la asamblea</li>
+          </ul>
+          <div class="acciones">
+            <a class="btn prim chico" href="consorcia/">Conocer Consorcia</a>
+            <a class="btn sec chico" data-wa="Hola Andrés! Tengo una administración de consorcios y me interesa ver una demo de Consorcia." href="#"><svg><use href="#wa"/></svg>Pedir una demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod">
+        <img src="img/butacapp.jpg" alt="Butacapp: mapa de butacas y entrada con QR" loading="lazy">
+        <div class="cuerpo">
+          <div class="tag"><b>●</b> escuelas · teatros · colegios</div>
+          <h3>Butacapp</h3>
+          <p>Reserva de butacas para muestras y funciones: las familias eligen en el mapa de la sala, pagan por transferencia y entran con QR. Sin planillas y sin butacas duplicadas.</p>
+          <div class="acciones">
+            <a class="btn prim chico" href="https://butacapp-ar.vercel.app" target="_blank" rel="noopener">Conocer Butacapp</a>
+            <a class="btn sec chico" href="https://reservas-butacas.vercel.app/?e=demo" target="_blank" rel="noopener">Probar la demo</a>
+          </div>
+        </div>
+      </div>
+      <div class="prod">
+        <img src="img/clincaja.jpg" alt="Clincaja: punto de venta en el celular" loading="lazy">
+        <div class="cuerpo">
+          <div class="tag"><b>●</b> comercios</div>
+          <h3>Clincaja</h3>
+          <p>La caja de tu local en el celular: ventas, stock, clientes, envíos por zona y reportes. Funciona sobre Google Sheets, sin cuota mensual: se paga una sola vez.</p>
+          <div class="acciones">
+            <a class="btn prim chico" href="https://clincaja.vercel.app" target="_blank" rel="noopener">Conocer Clincaja</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sistemas">
+  <div class="wrap">
+    <div class="kicker">02 / sistemas a medida</div>
+    <h2>Hechos para cada negocio, usados todos los días.</h2>
+    <p class="sub">Algunos de los sistemas que desarrollé para clientes. Cada uno resolvió un problema concreto de gestión.</p>
+    <div class="casos">
+      <div class="caso">
+        <div class="top"><span class="ic"><svg><use href="#i-edificio"/></svg></span><span class="num">01</span></div>
+        <h3>Administración de consorcios</h3>
+        <p>Sistema para una administradora de unos 50 edificios: propietarios, proveedores y trabajos con búsqueda universal, planos por edificio, notas con membrete y liquidaciones. Hoy es la base de Consorcia.</p>
+        <div class="stack"><span>Apps Script</span><span>Sheets</span></div>
+        <a class="ver" href="consorcia/">ver Consorcia →</a>
+      </div>
+      <div class="caso">
+        <div class="top"><span class="ic"><svg><use href="#i-caja"/></svg></span><span class="num">02</span></div>
+        <h3>Punto de venta para vinoteca</h3>
+        <p>Ventas con todos los medios de pago, stock, clientes, envíos por zona, gastos, proveedores, catas y eventos, y reportes. Hoy es la base de Clincaja.</p>
+        <div class="stack"><span>Apps Script</span><span>Sheets</span><span>Chart.js</span></div>
+      </div>
+      <div class="caso">
+        <div class="top"><span class="ic"><svg><use href="#i-ticket"/></svg></span><span class="num">03</span></div>
+        <h3>Escuela de danza</h3>
+        <p>Inscripciones, cuotas, asistencia, calendario y caja, más un sistema de entradas para la muestra de fin de año que después se convirtió en Butacapp.</p>
+        <div class="stack"><span>Apps Script</span><span>Firebase</span></div>
+      </div>
+      <div class="caso">
+        <div class="top"><span class="ic"><svg><use href="#i-mail"/></svg></span><span class="num">04</span></div>
+        <h3>Gestión de cobranzas</h3>
+        <p>Recordatorios automáticos por mail para facturas vencidas y por vencer, con plantillas configurables y estadísticas diarias para el equipo de cobranzas.</p>
+        <div class="stack"><span>Apps Script</span><span>Gmail</span><span>Sheets</span></div>
+      </div>
+      <div class="caso">
+        <div class="top"><span class="ic"><svg><use href="#i-pulso"/></svg></span><span class="num">05</span></div>
+        <h3>Gimnasio</h3>
+        <p>Socios, asistencia, cuotas, clases y rutinas, con portal para que cada socio entre con su DNI y un medidor de ocupación en vivo.</p>
+        <div class="stack"><span>Apps Script</span><span>Sheets</span></div>
+      </div>
+      <div class="caso">
+        <div class="top"><span class="ic"><svg><use href="#i-mesa"/></svg></span><span class="num">06</span></div>
+        <h3>Pizzería</h3>
+        <p>Mapa del salón que se arma arrastrando las mesas, panel de cocina en tiempo real, delivery y tablero de reportes.</p>
+        <div class="stack"><span>Next.js</span><span>Supabase</span><span>Vercel</span></div>      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="wrap">
+    <div class="kicker">03 / proyectos propios</div>
+    <h2>Apps y juegos que desarrollo por iniciativa propia.</h2>
+    <p class="sub">Donde pruebo ideas nuevas. Algunas ya las usa mucha gente, otras están en camino.</p>
+    <div class="grilla">
+      <a class="proy" href="https://andiamotrip.vercel.app" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">app</span><span class="estado vivo">en uso</span></div>
+        <h3>Andiamo</h3><p>Organizador de viajes compartido: itinerario, gastos, diario, alertas de precios de vuelos y servicios sugeridos para cada destino.</p>
+        <span class="ir">abrir →</span>
+      </a>
+      <a class="proy" href="https://arbolconraices.vercel.app" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">app</span><span class="estado vivo">en uso</span></div>
+        <h3>Raíces</h3><p>Árbol genealógico colaborativo para armar en familia, con recordatorios de cumpleaños.</p>
+        <span class="ir">abrir →</span>
+      </a>
+      <a class="proy" href="https://vinitoswapp.vercel.app" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">plataforma</span><span class="estado dev">piloto</span></div>
+        <h3>VinitoSwapp</h3><p>Plataforma para que las vinotecas intercambien o vendan la mercadería que no rota, con ofertas y subastas por lote.</p>
+        <span class="ir">abrir →</span>
+      </a>
+      <a class="proy" href="https://andresdonia-pixel.github.io/4mulios/" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">juego</span><span class="estado vivo">online</span></div>
+        <h3>4 Mulios</h3><p>Adiviná el futbolista por los escudos de sus clubes. Cinco rondas por día, tabla de puntos y desafíos 1 a 1.</p>
+        <span class="ir">jugar →</span>
+      </a>
+      <a class="proy" href="https://andresdonia-pixel.github.io/dondeestaelcrack/" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">juego</span><span class="estado vivo">online</span></div>
+        <h3>¿Dónde está el Crack?</h3><p>Al estilo Carmen Sandiego, pero de fútbol: perseguí a un crack prófugo por el mundo siguiendo pistas.</p>
+        <span class="ir">jugar →</span>
+      </a>
+      <a class="proy" href="https://pixelme-rho.vercel.app" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">app</span><span class="estado vivo">online</span></div>
+        <h3>Pixelme</h3><p>Un personaje pixel art que refleja tu día real según tus actividades: mente, código, cuerpo y vínculos.</p>
+        <span class="ir">abrir →</span>
+      </a>
+      <div class="proy">
+        <div class="top"><span class="tipo">juego</span><span class="estado dev">en desarrollo</span></div>
+        <h3>Truco online</h3><p>Truco multijugador 1 vs 1 y 2 vs 2, con flor configurable, chat por equipo y modo contra la computadora.</p>
+      </div>
+      <div class="proy">
+        <div class="top"><span class="tipo">juego</span><span class="estado dev">en desarrollo</span></div>
+        <h3>SUBLO</h3><p>Juego de escondidas en un aeropuerto, en vista isométrica, con bots que buscan y siguen al escondido.</p>
+      </div>
+      <a class="proy" href="https://melbox-cabin.vercel.app" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">sitio</span><span class="estado vivo">online</span></div>
+        <h3>Melbox</h3><p>Sitio de un emprendimiento propio de box sanitarios y divisores de melamina, con envío a CABA y AMBA.</p>
+        <span class="ir">visitar →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div>
+      <div class="kicker">04 / sobre mí</div>
+      <h2>Entiendo el negocio antes de escribir código.</h2>
+      <p>Soy <b>desarrollador freelance en Buenos Aires</b>. Antes de programar trabajé en <b>administración de consorcios, ventas de propiedades y materiales de construcción, y turismo</b>. Por eso arranco entendiendo cómo trabaja tu equipo y recién después armo el sistema.</p>
+      <p>Prefiero soluciones <b>simples, rápidas y baratas de mantener</b>: muchas veces alcanza con Google Sheets bien aprovechado, y cuando hace falta algo más grande uso Next.js, Supabase o Firebase.</p>
+      <p style="margin-top:24px"><a class="btn sec chico" href="https://cvinteractive.netlify.app" target="_blank" rel="noopener">Ver CV interactivo</a></p>
+    </div>
+    <div class="pasos">
+      <h3>// cómo trabajamos</h3>
+      <ol>
+        <li><span><b>Charlamos</b>Me contás cómo trabajan hoy y qué les complica el día.</span></li>
+        <li><span><b>Te propongo</b>Una solución concreta, con precio y plazos claros.</span></li>
+        <li><span><b>Lo armo y lo probás</b>Ves avances reales desde el primer momento y ajustamos juntos.</span></li>
+        <li><span><b>Te acompaño</b>Lo ponemos en marcha y sigo cerca para lo que necesites.</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="kicker">05 / contacto</div>
+    <h2>¿Tenés un problema que un sistema podría resolver?</h2>
+    <p class="sub">Contame de tu negocio. Sin compromiso, te digo cómo lo resolvería y cuánto costaría.</p>
+    <div class="ctas">
+      <a class="btn prim" data-wa href="#"><svg><use href="#wa"/></svg>Escribime por WhatsApp</a>
+      <a class="btn sec" href="mailto:andres.donia@gmail.com">andres.donia@gmail.com</a>
+    </div>
+    <div class="redes">
+      <a href="https://github.com/andresdonia-pixel" target="_blank" rel="noopener">github</a>
+      <a href="https://cvinteractive.netlify.app" target="_blank" rel="noopener">cv interactivo</a>
+    </div>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>© 2026 Andrés D'Onia · Buenos Aires</span><span>andresdonia.com.ar</span></div></footer>
+
+<script>
+  const CONFIG = { whatsapp: "5491170659374", mensaje: "Hola Andrés! Vi tu sitio y quería consultarte por un sistema." };
+  document.querySelectorAll("[data-wa]").forEach((a) => {
+    // data-wa puede traer un mensaje propio (por ejemplo, el de Consorcia)
+    const msj = a.getAttribute("data-wa") || CONFIG.mensaje;
+    a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msj)}`;
+    a.target = "_blank"; a.rel = "noopener";
+  });
+</script>
+</body>
+</html>
