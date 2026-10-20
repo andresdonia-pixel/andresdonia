@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" width="1280" height="720" font-family="Inter, system-ui, sans-serif">
+  <defs>
+    <radialGradient id="glow" cx="15%" cy="0%" r="70%">
+      <stop offset="0" stop-color="#34d399" stop-opacity=".2"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M48 0H0V48" fill="none" stroke="#1f2833" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1280" height="720" fill="#0a0d12"/>
+  <rect width="1280" height="720" fill="url(#grid)" opacity=".5"/>
+  <rect width="1280" height="720" fill="url(#glow)"/>
+
+  <g transform="translate(80 70)">
+    <rect width="1120" height="600" rx="16" fill="#121821" stroke="#2a3644"/>
+    <path d="M16 0h1088a16 16 0 0 1 16 16v28H0V16A16 16 0 0 1 16 0Z" fill="#171f2a"/>
+    <circle cx="24" cy="22" r="6" fill="#2c3643"/><circle cx="44" cy="22" r="6" fill="#2c3643"/><circle cx="64" cy="22" r="6" fill="#2c3643"/>
+    <text x="92" y="27" font-family="JetBrains Mono, monospace" font-size="13" fill="#5f6b7a">canchapp · turnos de hoy</text>
+
+    <!-- encabezado -->
+    <text x="36" y="92" font-size="26" font-weight="700" fill="#e6edf3" font-family="Space Grotesk, Inter, sans-serif">Martes 20</text>
+    <text x="36" y="118" font-size="14" fill="#8b98a8">3 canchas · reservas pagadas por adelantado</text>
+    <g transform="translate(780 70)">
+      <rect width="300" height="56" rx="10" fill="#0e1218" stroke="#1f2833"/>
+      <text x="18" y="24" font-family="JetBrains Mono, monospace" font-size="11" fill="#5f6b7a" letter-spacing="1">COBRADO HOY</text>
+      <text x="18" y="45" font-size="19" font-weight="700" fill="#34d399">$ 2.000.000</text>
+      <text x="282" y="45" font-size="12" fill="#8b98a8" text-anchor="end">13 turnos</text>
+    </g>
+
+    <!-- columnas -->
+    <g font-family="JetBrains Mono, monospace" font-size="12" fill="#8b98a8" letter-spacing="1">
+      <text x="140" y="168">CANCHA 1 · F8</text>
+      <text x="460" y="168">CANCHA 2 · F5</text>
+      <text x="780" y="168">CANCHA 3 · F5</text>
+    </g>
+    <g font-family="JetBrains Mono, monospace" font-size="13" fill="#5f6b7a">
+      <text x="36" y="214">19:00</text><text x="36" y="290">20:00</text><text x="36" y="366">21:00</text><text x="36" y="442">22:00</text><text x="36" y="518">23:00</text>
+    </g>
+    <g stroke="#1f2833"><path d="M120 184H1090M120 260H1090M120 336H1090M120 412H1090M120 488H1090M120 564H1090"/></g>
+
+    <!-- turnos pagados -->
+    <g>
+      <rect x="128" y="190" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="146" y="216" font-size="15" font-weight="600" fill="#e6edf3">Los del martes</text>
+      <text x="146" y="238" font-size="12.5" fill="#5eead4">Pagado · dividido por equipo</text>
+
+      <rect x="448" y="190" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="466" y="216" font-size="15" font-weight="600" fill="#e6edf3">Turno fijo · Oficina</text>
+      <text x="466" y="238" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <rect x="768" y="190" width="300" height="62" rx="9" fill="#0e1218" stroke="#2a3644" stroke-dasharray="5 5"/>
+      <text x="786" y="226" font-size="14" fill="#5f6b7a">Libre · reservar</text>
+
+      <rect x="128" y="266" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="146" y="292" font-size="15" font-weight="600" fill="#e6edf3">Blancos vs Azules</text>
+      <text x="146" y="314" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <!-- cancelado y reasignado -->
+      <rect x="448" y="266" width="300" height="62" rx="9" fill="#2a2210" stroke="#fbbf24" stroke-opacity=".6"/>
+      <text x="466" y="292" font-size="15" font-weight="600" fill="#e6edf3">Canceló a último momento</text>
+      <text x="466" y="314" font-size="12.5" fill="#fbbf24">Turno retenido · devolución parcial</text>
+
+      <rect x="768" y="266" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="786" y="292" font-size="15" font-weight="600" fill="#e6edf3">Los pibes del club</text>
+      <text x="786" y="314" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <!-- banco de suplentes -->
+      <rect x="128" y="342" width="300" height="62" rx="9" fill="#132036" stroke="#60a5fa" stroke-opacity=".6"/>
+      <text x="146" y="368" font-size="15" font-weight="600" fill="#e6edf3">Faltan 2 jugadores</text>
+      <text x="146" y="390" font-size="12.5" fill="#60a5fa">Banco de suplentes · 5 disponibles</text>
+
+      <rect x="448" y="342" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="466" y="368" font-size="15" font-weight="600" fill="#e6edf3">Fútbol de los jueves</text>
+      <text x="466" y="390" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <rect x="768" y="342" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="786" y="368" font-size="15" font-weight="600" fill="#e6edf3">Cumple de Facu</text>
+      <text x="786" y="390" font-size="12.5" fill="#5eead4">Pagado · seña + saldo</text>
+
+      <rect x="128" y="418" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="146" y="444" font-size="15" font-weight="600" fill="#e6edf3">Veteranos</text>
+      <text x="146" y="466" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <rect x="448" y="418" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="466" y="444" font-size="15" font-weight="600" fill="#e6edf3">Turno fijo · Facultad</text>
+      <text x="466" y="466" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <rect x="768" y="418" width="300" height="62" rx="9" fill="#0e1218" stroke="#2a3644" stroke-dasharray="5 5"/>
+      <text x="786" y="454" font-size="14" fill="#5f6b7a">Libre · reservar</text>
+
+      <rect x="128" y="494" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="146" y="520" font-size="15" font-weight="600" fill="#e6edf3">Nocturno</text>
+      <text x="146" y="542" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <rect x="448" y="494" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="466" y="520" font-size="15" font-weight="600" fill="#e6edf3">Amigos del barrio</text>
+      <text x="466" y="542" font-size="12.5" fill="#5eead4">Pagado</text>
+
+      <rect x="768" y="494" width="300" height="62" rx="9" fill="#11302a" stroke="#2dd4bf" stroke-opacity=".5"/>
+      <text x="786" y="520" font-size="15" font-weight="600" fill="#e6edf3">Torneo interno</text>
+      <text x="786" y="542" font-size="12.5" fill="#5eead4">Pagado</text>
+    </g>
+  </g>
+</svg>

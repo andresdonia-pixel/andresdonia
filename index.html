@@ -119,6 +119,8 @@
   .grilla { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
   .proy { background: var(--sup); border: 1px solid var(--borde); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; transition: border-color .2s; }
   a.proy:hover { border-color: var(--ac); }
+  .proy.ancho { grid-column: 1 / -1; }
+  .proy.ancho p { max-width: 70ch; }
   .proy .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-family: var(--mono); font-size: 11.5px; }
   .proy .tipo { color: var(--gris2); text-transform: uppercase; letter-spacing: 1px; }
   .estado { display: inline-flex; align-items: center; gap: 6px; color: var(--gris); }
@@ -250,6 +252,22 @@
           </div>
         </div>
       </div>
+      <div class="prod dest">
+        <img src="img/canchapp.svg" alt="Canchapp: grilla de turnos del día con reservas pagadas, una cancelación retenida y el banco de suplentes" loading="lazy">
+        <div class="cuerpo">
+          <div class="tag"><b>●</b> complejos de fútbol</div>
+          <h3>Canchapp<span class="nuevo">NUEVO</span></h3>
+          <p>Reservas de canchas con cobro por adelantado. Cada complejo tiene su propio portal: los equipos reservan y pagan online, y si un grupo cancela a último momento el turno ya está cobrado. Sin cargos extra para el jugador.</p>
+          <ul class="puntos">
+            <li>Pago por adelantado, con devolución parcial si avisan que no van</li>
+            <li>El pago se puede dividir por jugador o por equipo</li>
+            <li>Banco de suplentes para cuando a un equipo le faltan jugadores</li>
+          </ul>
+          <div class="acciones">
+            <a class="btn sec chico" data-wa="Hola Andrés! Tengo un complejo de canchas y me interesa ver una demo de Canchapp." href="#"><svg><use href="#wa"/></svg>Pedir una demo</a>
+          </div>
+        </div>
+      </div>
       <div class="prod">
         <img src="img/butacapp.jpg" alt="Butacapp: mapa de butacas y entrada con QR" loading="lazy">
         <div class="cuerpo">
@@ -329,6 +347,11 @@
     <h2>Apps y juegos que desarrollo por iniciativa propia.</h2>
     <p class="sub">Donde pruebo ideas nuevas. Algunas ya las usa mucha gente, otras están en camino.</p>
     <div class="grilla">
+      <a class="proy ancho" href="https://sudapp.vercel.app" target="_blank" rel="noopener">
+        <div class="top"><span class="tipo">app<span class="nuevo">NUEVO</span></span><span class="estado vivo">online</span></div>
+        <h3>Sudapp</h3><p>Rutina de fuerza guiada de 45 minutos: figura animada para cada ejercicio, reloj, metrónomo, corneta y voz que te van marcando los tiempos. Editás trabajo, descanso, vueltas y ejercicios a tu medida.</p>
+        <span class="ir">entrenar →</span>
+      </a>
       <a class="proy" href="https://andiamotrip.vercel.app" target="_blank" rel="noopener">
         <div class="top"><span class="tipo">app</span><span class="estado vivo">en uso</span></div>
         <h3>Andiamo</h3><p>Organizador de viajes compartido: itinerario, gastos, diario, alertas de precios de vuelos y servicios sugeridos para cada destino.</p>
