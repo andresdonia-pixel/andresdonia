@@ -101,6 +101,62 @@
   .puntos li { display: flex; gap: 10px; }
   .puntos li::before { content: "→"; font-family: var(--mono); color: var(--ac); flex: none; }
 
+  /* Plomadapp: demo animada */
+  .pl { border-color: #2b3a4d; }
+  .pl:hover { border-color: #e8b53c; }
+  .pl-demo { --pb:#0d131a; --ps:#141c26; --pl:#273342; --pt:#e2e8ef; --pm:#94a3b4; --pa:#6fa6e6; --pmo:#36577e; --pk:#e8b53c; --lab:94px;
+    background: var(--pb); border-right: 1px solid var(--borde); display: flex; flex-direction: column; min-width: 0; overflow: hidden; }
+  .pl-win { height: 34px; display: flex; align-items: center; gap: 7px; padding: 0 14px; background: var(--ps); border-bottom: 1px solid var(--pl); flex: none; }
+  .pl-win i { width: 10px; height: 10px; border-radius: 50%; background: #2c3643; }
+  .pl-win span { margin-left: 10px; font-family: var(--mono); font-size: 11.5px; color: var(--gris2); }
+  .pl-body { padding: 18px 20px 20px; display: grid; gap: 16px; flex: 1; align-content: center; }
+  .pl-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .pl-brand { display: flex; align-items: center; gap: 10px; font-family: var(--disp); font-weight: 700; font-size: 15px; letter-spacing: 2px; color: var(--pt); }
+  .pl-bob { width: 12px; height: 22px; position: relative; transform-origin: 50% 0; animation: plSwing 3.2s ease-in-out infinite; }
+  .pl-bob::before { content: ""; position: absolute; left: 5px; top: 0; width: 2px; height: 8px; background: var(--pk); }
+  .pl-bob::after { content: ""; position: absolute; left: 0; top: 8px; border-left: 6px solid transparent; border-right: 6px solid transparent; border-top: 13px solid var(--pk); }
+  @keyframes plSwing { 0%, 100% { transform: rotate(-9deg); } 50% { transform: rotate(9deg); } }
+  .pl-fin { text-align: right; line-height: 1.15; }
+  .pl-fin small { display: block; font-family: var(--mono); font-size: 10px; letter-spacing: 1.2px; color: var(--pm); }
+  .pl-fin b { font-family: var(--disp); font-size: 19px; color: var(--pt); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pl-gantt { position: relative; display: grid; gap: 6px; }
+  .pl-meses { display: flex; justify-content: space-between; margin-left: var(--lab); font-family: var(--mono); font-size: 10px; color: var(--pm); text-transform: uppercase; letter-spacing: .8px; padding-bottom: 2px; border-bottom: 1px solid var(--pl); }
+  .pl-row { display: grid; grid-template-columns: var(--lab) 1fr; align-items: center; height: 16px; }
+  .pl-row span { font-size: 11.5px; color: var(--pm); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; padding-right: 8px; }
+  .pl-tr { position: relative; height: 10px; border-radius: 3px; background: rgba(255,255,255,.025); }
+  .pl-tr b { position: absolute; top: 0; bottom: 0; left: calc(var(--l) * 1%); width: calc(var(--w) * 1%); border-radius: 3px; background: linear-gradient(90deg, var(--pa), #8fbcf0); transform-origin: left center; }
+  .pl-hoy { position: absolute; top: 24px; bottom: -4px; left: var(--lab); right: 0; pointer-events: none; }
+  .pl-hoy i { position: absolute; top: 0; bottom: 0; left: 100%; width: 2px; margin-left: -1px; background: var(--pk); box-shadow: 0 0 10px rgba(232,181,60,.6); opacity: 0; }
+  .pl-pie { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; position: relative; }
+  .pl-pie small { display: block; font-family: var(--mono); font-size: 9.5px; letter-spacing: 1.1px; color: var(--pm); margin-bottom: 6px; }
+  .pl-gasto, .pl-curva { background: var(--ps); border: 1px solid var(--pl); border-radius: 8px; padding: 10px 12px 10px; min-width: 0; }
+  .pl-barras { height: 52px; display: flex; align-items: flex-end; gap: 4px; }
+  .pl-barras i { flex: 1; height: calc(var(--h) * 1%); border-radius: 2px 2px 0 0; background: linear-gradient(var(--pa) 0 38%, var(--pmo) 38%); transform-origin: bottom; }
+  .pl-curva svg { display: block; width: 100%; height: 52px; overflow: visible; }
+  .pl-area { fill: var(--pa); opacity: .16; }
+  .pl-linea { fill: none; stroke: var(--pa); stroke-width: 2.2; vector-effect: non-scaling-stroke; stroke-dasharray: 1; stroke-dashoffset: 0; }
+  .pl-chip { position: absolute; right: 10px; top: -13px; font-family: var(--mono); font-size: 11px; font-weight: 700; color: #062a1c; background: var(--ok); border-radius: 999px; padding: 3px 10px; box-shadow: 0 6px 18px rgba(52,211,153,.25); }
+  /* Ciclo: la clase pl-anim la pone el script; sin script se ve el estado final */
+  .pl-anim:not(.run) .pl-tr b { transform: scaleX(0); }
+  .pl-anim:not(.run) .pl-barras i { transform: scaleY(0); }
+  .pl-anim:not(.run) .pl-linea { stroke-dashoffset: 1; }
+  .pl-anim:not(.run) .pl-area { opacity: 0; }
+  .pl-anim:not(.run) .pl-chip { opacity: 0; transform: translateY(6px) scale(.92); }
+  .pl-anim:not(.run) .pl-hoy i { left: 0; opacity: 1; }
+  .pl-anim.run .pl-tr b { transition: transform .55s cubic-bezier(.2,.7,.2,1) calc(var(--i) * .5s); }
+  .pl-anim.run .pl-barras i { transition: transform .5s cubic-bezier(.2,.7,.2,1) calc(.3s + var(--i) * .44s); }
+  .pl-anim.run .pl-linea { transition: stroke-dashoffset 4.6s linear .3s; }
+  .pl-anim.run .pl-area { transition: opacity .8s ease 4.4s; }
+  .pl-anim.run .pl-hoy i { opacity: 0; transition: left 4.8s linear, opacity .4s ease 4.8s; }
+  .pl-anim.run .pl-chip { transition: opacity .35s ease 5s, transform .45s cubic-bezier(.2,1.4,.4,1) 5s; }
+  @media (prefers-reduced-motion: reduce) { .pl-bob { animation: none; } }
+
+  /* Aparición suave al hacer scroll (solo si hay JavaScript) */
+  .rv-on .rv { opacity: 0; translate: 0 18px;
+    transition: opacity .6s ease, translate .6s cubic-bezier(.2,.7,.2,1), border-color .2s, transform .2s, background .2s;
+    transition-delay: var(--rv, 0s), var(--rv, 0s), 0s, 0s, 0s; }
+  .rv-on .rv.in { opacity: 1; translate: none; }
+
   /* Butacapp destacado */
   .bc { position: relative; overflow: hidden; background: linear-gradient(160deg, #1a0f1c 0%, var(--bg) 70%); }
   .bc::before { content: ""; position: absolute; width: 820px; height: 820px; left: -260px; top: -320px; background: radial-gradient(circle, rgba(245,192,74,.13), transparent 62%); }
@@ -186,6 +242,7 @@
     .prod.dest { grid-template-columns: 1fr; }
     .prod.dest img { aspect-ratio: 16 / 9; height: auto; min-height: 0; border-right: 0; border-bottom: 1px solid var(--borde); }
     .prod.dest .cuerpo { padding: 26px; }
+    .pl-demo { border-right: 0; border-bottom: 1px solid var(--borde); }
     .casos, .grilla { grid-template-columns: 1fr 1fr; }
     .bc-top { grid-template-columns: 1fr; gap: 36px; }
     .bc-feats { grid-template-columns: 1fr 1fr; }
@@ -197,6 +254,11 @@
     .ctas .btn { width: 100%; }
     h1 { letter-spacing: -1.2px; }
     .marca .ocultar { display: none; }
+    .pl-demo { --lab: 80px; }
+    .pl-body { padding: 16px 14px 18px; }
+    .pl-fin b { font-size: 16px; }
+    .pl-pie { grid-template-columns: 1fr; }
+    .pl-curva { display: none; }
   }
 </style>
 </head>
@@ -290,6 +352,53 @@
     <h2>Listos para usar en tu negocio.</h2>
     <p class="sub">Nacieron de sistemas que hice para clientes y hoy cualquiera puede aprovecharlos.</p>
     <div class="prods">
+      <div class="prod dest pl" id="plomadapp">
+        <div class="pl-demo" role="img" aria-label="Animación de Plomadapp: el cronograma de una obra se arma semana a semana, se calcula la fecha de fin y se dibuja la curva de inversión">
+          <div class="pl-win"><i></i><i></i><i></i><span>plomadapp.vercel.app</span></div>
+          <div class="pl-body">
+            <div class="pl-top">
+              <div class="pl-brand"><span class="pl-bob"></span>PLOMADAPP</div>
+              <div class="pl-fin"><small>FIN ESTIMADO</small><b data-pl-fin>vie, 24 sept 2027</b></div>
+            </div>
+            <div class="pl-gantt">
+              <div class="pl-meses"><span>nov</span><span>ene</span><span>mar</span><span>may</span><span>jul</span><span>sep</span></div>
+              <div class="pl-row"><span>Preliminares</span><div class="pl-tr"><b style="--l:0;--w:5;--i:0"></b></div></div>
+              <div class="pl-row"><span>Fundaciones</span><div class="pl-tr"><b style="--l:5;--w:9;--i:1"></b></div></div>
+              <div class="pl-row"><span>Estructura</span><div class="pl-tr"><b style="--l:13;--w:15;--i:2"></b></div></div>
+              <div class="pl-row"><span>Mampostería</span><div class="pl-tr"><b style="--l:26;--w:14;--i:3"></b></div></div>
+              <div class="pl-row"><span>Instalaciones</span><div class="pl-tr"><b style="--l:34;--w:18;--i:4"></b></div></div>
+              <div class="pl-row"><span>Revoques</span><div class="pl-tr"><b style="--l:47;--w:18;--i:5"></b></div></div>
+              <div class="pl-row"><span>Pisos</span><div class="pl-tr"><b style="--l:64;--w:12;--i:6"></b></div></div>
+              <div class="pl-row"><span>Pintura</span><div class="pl-tr"><b style="--l:74;--w:14;--i:7"></b></div></div>
+              <div class="pl-row"><span>Artefactos</span><div class="pl-tr"><b style="--l:86;--w:9;--i:8"></b></div></div>
+              <div class="pl-hoy"><i></i></div>
+            </div>
+            <div class="pl-pie">
+              <div class="pl-gasto"><small>GASTO POR MES</small><div class="pl-barras">
+                <i style="--h:42;--i:0"></i><i style="--h:58;--i:1"></i><i style="--h:50;--i:2"></i><i style="--h:44;--i:3"></i><i style="--h:62;--i:4"></i><i style="--h:70;--i:5"></i><i style="--h:100;--i:6"></i><i style="--h:84;--i:7"></i><i style="--h:66;--i:8"></i><i style="--h:30;--i:9"></i>
+              </div></div>
+              <div class="pl-curva"><small>CURVA DE INVERSIÓN</small>
+                <svg viewBox="0 0 200 80" preserveAspectRatio="none" aria-hidden="true"><path class="pl-area" d="M0,80 C40,74 70,56 100,40 S160,6 200,2 L200,80 Z"/><path class="pl-linea" pathLength="1" d="M0,80 C40,74 70,56 100,40 S160,6 200,2"/></svg>
+              </div>
+              <span class="pl-chip">Llega con 1 semana de margen</span>
+            </div>
+          </div>
+        </div>
+        <div class="cuerpo">
+          <div class="tag"><b>●</b> constructoras y estudios</div>
+          <h3>Plomadapp<span class="nuevo">NUEVO</span></h3>
+          <p>Organizador de obra. Cargás los m², la cuadrilla y la fecha de entrega, y arma el cronograma, el cómputo de materiales, qué comprar cada semana y cuánta plata va a hacer falta. Si no llegás a la fecha, te dice cuántos obreros te faltan.</p>
+          <ul class="puntos">
+            <li>Cronograma semana a semana con el orden real de la obra</li>
+            <li>Lista de compras semanal, lista para mandar al corralón</li>
+            <li>Flujo de fondos, curva de inversión y precio final por m²</li>
+          </ul>
+          <div class="acciones">
+            <a class="btn prim chico" href="https://plomadapp.vercel.app" target="_blank" rel="noopener">Probar Plomadapp</a>
+            <a class="btn sec chico" data-wa="Hola Andrés! Vi Plomadapp y me interesa probarlo en una obra." href="#"><svg><use href="#wa"/></svg>Probarlo en mi obra</a>
+          </div>
+        </div>
+      </div>
       <div class="prod dest">
         <img src="img/consorcia.svg" alt="Consorcia: panel de gestión de edificios con expensas y cobranza" loading="lazy">
         <div class="cuerpo">
@@ -511,6 +620,51 @@
     a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msj)}`;
     a.target = "_blank"; a.rel = "noopener";
   });
+
+  const quieto = matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Plomadapp: el cronograma se arma en bucle mientras la tarjeta está en pantalla
+  (() => {
+    const demo = document.querySelector(".pl-demo");
+    if (!demo || quieto || !("IntersectionObserver" in window)) return;
+    const fin = demo.querySelector("[data-pl-fin]");
+    const ini = new Date(2026, 10, 2), fen = new Date(2027, 8, 24), DUR = 4800, CICLO = 8600;
+    const fmt = (d) => d.toLocaleDateString("es-AR", { weekday: "short", day: "numeric", month: "short", year: "numeric" });
+    let visible = false, timer = null, raf = null;
+    const contar = (t0) => {
+      const p = Math.min(1, (performance.now() - t0) / DUR);
+      fin.textContent = fmt(new Date(ini.getTime() + (fen - ini) * p));
+      if (p < 1) raf = requestAnimationFrame(() => contar(t0));
+    };
+    const ciclo = () => {
+      demo.classList.remove("run");
+      void demo.offsetWidth;            // reinicia las transiciones
+      demo.classList.add("run");
+      cancelAnimationFrame(raf); contar(performance.now());
+      timer = setTimeout(() => { if (visible) ciclo(); else timer = null; }, CICLO);
+    };
+    demo.classList.add("pl-anim", "run");
+    new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (visible && !timer) ciclo();
+    }, { threshold: 0.35 }).observe(demo);
+  })();
+
+  // Aparición suave de tarjetas al bajar
+  (() => {
+    if (quieto || !("IntersectionObserver" in window)) return;
+    const els = document.querySelectorAll(".prod, .caso, .proy, .bc-feat, .pasos");
+    document.documentElement.classList.add("rv-on");
+    els.forEach((el) => {
+      el.classList.add("rv");
+      const hermanos = [...el.parentElement.children];
+      el.style.setProperty("--rv", (hermanos.indexOf(el) % 3) * 0.08 + "s");
+    });
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    }), { rootMargin: "0px 0px -8% 0px" });
+    els.forEach((el) => io.observe(el));
+  })();
 </script>
 </body>
 </html>
