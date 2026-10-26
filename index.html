@@ -101,6 +101,31 @@
   .puntos li { display: flex; gap: 10px; }
   .puntos li::before { content: "→"; font-family: var(--mono); color: var(--ac); flex: none; }
 
+  /* Butacapp destacado */
+  .bc { position: relative; overflow: hidden; background: linear-gradient(160deg, #1a0f1c 0%, var(--bg) 70%); }
+  .bc::before { content: ""; position: absolute; width: 820px; height: 820px; left: -260px; top: -320px; background: radial-gradient(circle, rgba(245,192,74,.13), transparent 62%); }
+  .bc .wrap { position: relative; }
+  .bc .kicker { color: #f5c04a; }
+  .bc-top { display: grid; grid-template-columns: 1fr 1.1fr; gap: 52px; align-items: center; }
+  .bc h2 .am { color: #f5c04a; }
+  .bc .sub { margin-bottom: 26px; }
+  .bc-img { border-radius: 14px; overflow: hidden; border: 1px solid #3a2a3c; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+  .bc-img img { width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+  .btn.am { background: #f5c04a; color: #2a1606; }
+  .btn.am:hover { background: #ffd36e; }
+  .prueba { margin-top: 22px; font-family: var(--mono); font-size: 13px; color: var(--gris); display: flex; align-items: center; gap: 10px; }
+  .prueba::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 4px rgba(52,211,153,.15); flex: none; }
+  .bc-feats { margin-top: 56px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #2e2230; border: 1px solid #2e2230; border-radius: 14px; overflow: hidden; }
+  .bc-feat { background: rgba(14,18,24,.92); padding: 24px; }
+  .bc-feat b { display: block; font-family: var(--disp); font-size: 17px; letter-spacing: -.2px; margin-bottom: 6px; }
+  .bc-feat span { color: var(--gris); font-size: 14.5px; }
+  .bc-feat i { font-style: normal; font-family: var(--mono); font-size: 12px; color: #f5c04a; display: block; margin-bottom: 12px; }
+  .para { margin-top: 22px; font-family: var(--mono); font-size: 13px; color: var(--gris2); text-align: center; }
+  .aviso { display: inline-flex; align-items: center; gap: 10px; margin-top: 26px; padding: 8px 14px 8px 8px; border: 1px solid #3a2a3c; border-radius: 999px; background: rgba(245,192,74,.06); font-size: 14px; color: var(--gris); transition: border-color .15s; }
+  .aviso:hover { border-color: #f5c04a; }
+  .aviso b { font-family: var(--mono); font-size: 11px; font-weight: 700; color: #2a1606; background: #f5c04a; border-radius: 999px; padding: 2px 9px; letter-spacing: .4px; }
+  .aviso strong { color: var(--txt); font-weight: 600; }
+
   /* Casos */
   .casos { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--borde); border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; }
   .caso { background: var(--bg2); padding: 28px; display: flex; flex-direction: column; transition: background .2s; }
@@ -162,11 +187,13 @@
     .prod.dest img { aspect-ratio: 16 / 9; height: auto; min-height: 0; border-right: 0; border-bottom: 1px solid var(--borde); }
     .prod.dest .cuerpo { padding: 26px; }
     .casos, .grilla { grid-template-columns: 1fr 1fr; }
+    .bc-top { grid-template-columns: 1fr; gap: 36px; }
+    .bc-feats { grid-template-columns: 1fr 1fr; }
     section { padding: 68px 0; }
     .hero { padding: 60px 0 64px; }
   }
   @media (max-width: 560px) {
-    .casos, .grilla { grid-template-columns: 1fr; }
+    .casos, .grilla, .bc-feats { grid-template-columns: 1fr; }
     .ctas .btn { width: 100%; }
     h1 { letter-spacing: -1.2px; }
     .marca .ocultar { display: none; }
@@ -190,6 +217,7 @@
   <div class="wrap">
     <a class="marca" href="#"><img src="img/andres.jpg" alt="">andres<span>donia</span><span class="ocultar" style="color:var(--gris2)">.com.ar</span></a>
     <nav>
+      <a href="#butacapp" style="color:#f5c04a">Butacapp</a>
       <a href="#productos">Productos</a>
       <a href="#sistemas">Sistemas</a>
       <a href="#proyectos">Proyectos</a>
@@ -209,6 +237,7 @@
         <a class="btn prim" href="#productos">Ver trabajos</a>
         <a class="btn sec" data-wa href="#"><svg><use href="#wa"/></svg>Escribime por WhatsApp</a>
       </div>
+      <a class="aviso" href="#butacapp"><b>BUTACAPP</b><span><strong>¿Tenés muestra o función?</strong> Vendé las entradas online →</span></a>
     </div>
     <div class="ventana">
       <div class="barra"><i></i><i></i><i></i><span>~/andres-donia</span></div>
@@ -229,9 +258,35 @@
   </div>
 </div>
 
+<section class="bc" id="butacapp">
+  <div class="wrap">
+    <div class="bc-top">
+      <div>
+        <div class="kicker">★ producto destacado / butacapp</div>
+        <h2>Tu muestra a sala llena, <span class="am">sin planillas.</span></h2>
+        <p class="sub">Butacapp vende las entradas de tu muestra o función: las familias eligen su butaca en el mapa real de la sala, pagan online y reciben su entrada con QR. Vos ves todo lo vendido desde tu panel.</p>
+        <div class="ctas">
+          <a class="btn am" href="https://butacapp-ar.vercel.app" target="_blank" rel="noopener">Conocer Butacapp</a>
+          <a class="btn sec" href="https://reservas-butacas.vercel.app/?e=demo" target="_blank" rel="noopener">Probar la demo</a>
+        </div>
+        <a class="btn sec chico" style="margin-top:12px" data-wa="Hola Andrés! Tengo una muestra o función y me interesa Butacapp para vender las entradas." href="#"><svg><use href="#wa"/></svg>Quiero Butacapp para mi evento</a>
+        <div class="prueba">Ya lo usan escuelas de danza para sus muestras de fin de año</div>
+      </div>
+      <div class="bc-img"><img src="img/butacapp.jpg" alt="Butacapp: mapa de butacas de la sala y entrada con código QR en el celular" width="960" height="540"></div>
+    </div>
+    <div class="bc-feats">
+      <div class="bc-feat"><i>01</i><b>El mapa de tu sala</b><span>Armamos el plano real del teatro o auditorio. Cada butaca se vende una sola vez.</span></div>
+      <div class="bc-feat"><i>02</i><b>Cobro online</b><span>Con Mercado Pago directo a tu cuenta, o por transferencia con comprobante.</span></div>
+      <div class="bc-feat"><i>03</i><b>Entrada con QR</b><span>Cada familia recibe su entrada con las butacas y un código para la puerta.</span></div>
+      <div class="bc-feat"><i>04</i><b>Panel en vivo</b><span>Ventas, butacas libres y recaudación al instante. También podés vender en efectivo desde el panel.</span></div>
+    </div>
+    <p class="para">escuelas de danza · teatro · música · colegios · teatros y auditorios</p>
+  </div>
+</section>
+
 <section id="productos">
   <div class="wrap">
-    <div class="kicker">01 / productos</div>
+    <div class="kicker">01 / más productos</div>
     <h2>Listos para usar en tu negocio.</h2>
     <p class="sub">Nacieron de sistemas que hice para clientes y hoy cualquiera puede aprovecharlos.</p>
     <div class="prods">
@@ -285,19 +340,7 @@
           </div>
         </div>
       </div>
-      <div class="prod">
-        <img src="img/butacapp.jpg" alt="Butacapp: mapa de butacas y entrada con QR" loading="lazy">
-        <div class="cuerpo">
-          <div class="tag"><b>●</b> escuelas · teatros · colegios</div>
-          <h3>Butacapp</h3>
-          <p>Reserva de butacas para muestras y funciones: las familias eligen en el mapa de la sala, pagan por transferencia y entran con QR. Sin planillas y sin butacas duplicadas.</p>
-          <div class="acciones">
-            <a class="btn prim chico" href="https://butacapp-ar.vercel.app" target="_blank" rel="noopener">Conocer Butacapp</a>
-            <a class="btn sec chico" href="https://reservas-butacas.vercel.app/?e=demo" target="_blank" rel="noopener">Probar la demo</a>
-          </div>
-        </div>
-      </div>
-      <div class="prod">
+      <div class="prod dest">
         <img src="img/clincaja.jpg" alt="Clincaja: punto de venta en el celular" loading="lazy">
         <div class="cuerpo">
           <div class="tag"><b>●</b> comercios</div>
