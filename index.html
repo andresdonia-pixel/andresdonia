@@ -700,7 +700,8 @@
       if (contenido) {
         const y = Math.min(scrollY, innerHeight);
         contenido.style.transform = `translate3d(0, ${(y * 0.18).toFixed(1)}px, 0)`;
-        contenido.style.opacity = String(Math.max(0, 1 - y / (innerHeight * 0.9)).toFixed(3));
+        const f = Math.min(1, Math.max(0, (y - innerHeight * 0.5) / (innerHeight * 0.45)));
+        contenido.style.opacity = String((1 - f * 0.7).toFixed(3));
       }
     };
     addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(actualizar); } }, { passive: true });
