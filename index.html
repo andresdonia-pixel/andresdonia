@@ -260,6 +260,13 @@
     .pl-pie { grid-template-columns: 1fr; }
     .pl-curva { display: none; }
   }
+  /* Movimiento al scrollear: barra de progreso y aparición de títulos */
+  .scroll-bar { position: fixed; top: 0; left: 0; height: 2px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--am, #f5c04a), #e8457c); z-index: 50; pointer-events: none; }
+  .rv-on .kicker.rv, .rv-on section h2.rv, .rv-on .sub.rv { transition: opacity .7s ease, translate .7s cubic-bezier(.2,.7,.2,1); }
+  .rv-on .kicker.rv { translate: 0 10px; }
+  .rv-on section h2.rv, .rv-on .sub.rv { translate: 0 22px; }
+  .rv-on .kicker.rv.in, .rv-on section h2.rv.in, .rv-on .sub.rv.in { translate: none; }
+  .hero-desplaza { will-change: transform, opacity; }
 </style>
 </head>
 <body>
@@ -664,6 +671,41 @@
       if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
     }), { rootMargin: "0px 0px -8% 0px" });
     els.forEach((el) => io.observe(el));
+  })();
+  // Movimiento al scrollear: barra de progreso, títulos que aparecen y profundidad en el hero
+  (() => {
+    if (quieto) return;
+    const barra = document.createElement("div");
+    barra.className = "scroll-bar";
+    document.body.appendChild(barra);
+
+    const titulos = document.querySelectorAll(".kicker, section h2, .sub");
+    document.documentElement.classList.add("rv-on");
+    titulos.forEach((el) => el.classList.add("rv"));
+    const io = new IntersectionObserver((es) => es.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+    }), { rootMargin: "0px 0px -6% 0px" });
+    titulos.forEach((el) => io.observe(el));
+
+    const hero = document.querySelector(".hero");
+    const contenido = hero && hero.firstElementChild;
+    if (contenido) contenido.classList.add("hero-desplaza");
+
+    let pendiente = false;
+    const actualizar = () => {
+      pendiente = false;
+      const max = document.documentElement.scrollHeight - innerHeight;
+      const p = max > 0 ? scrollY / max : 0;
+      barra.style.transform = `scaleX(${p})`;
+      if (contenido) {
+        const y = Math.min(scrollY, innerHeight);
+        contenido.style.transform = `translate3d(0, ${(y * 0.18).toFixed(1)}px, 0)`;
+        contenido.style.opacity = String(Math.max(0, 1 - y / (innerHeight * 0.9)).toFixed(3));
+      }
+    };
+    addEventListener("scroll", () => { if (!pendiente) { pendiente = true; requestAnimationFrame(actualizar); } }, { passive: true });
+    addEventListener("resize", actualizar);
+    actualizar();
   })();
 </script>
 </body>
